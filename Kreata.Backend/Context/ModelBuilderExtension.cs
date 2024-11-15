@@ -1,5 +1,5 @@
-﻿using Kreata.Backend.Datas.Entities;
-using Kreata.Backend.Datas.Enums;
+﻿using Kreata.Backend.Datas;
+using Kreata.Backend.Datas.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kreata.Backend.Context
@@ -34,6 +34,51 @@ namespace Kreata.Backend.Context
 
             // Students
             modelBuilder.Entity<Student>().HasData(students);
+
+            List<Parent> parents = new List<Parent>
+            {
+                new Parent
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Miklós",
+                    LastName="Major",
+                    BirthDay=new DateTime(2020,10,10),
+                    MathersName="Anna",
+                },
+                new Parent
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Szilveszer",
+                    LastName="Szeplős",
+                    BirthDay=new DateTime(2011,4,4),
+                    MathersName="Szilvia",
+                }
+            };
+
+            modelBuilder.Entity<Parent>().HasData(parents);
+
+            List<Teacher> teachers = new List<Teacher>
+            {
+                new Teacher
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Béla",
+                    LastName="Végh",
+                    BirthDay=new DateTime(2000,10,10),
+                    MathersName="Balázs",
+                },
+                new Teacher
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Tivadar",
+                    LastName="Tapló",
+                    BirthDay=new DateTime(2001,4,4),
+                    MathersName="Tamás",
+                }
+            };
+
+            // Teachers
+            modelBuilder.Entity<Teacher>().HasData(teachers);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Kreata.Backend.Datas.Enums
+﻿namespace Kreata.Backend.Datas
 {
     public enum SchoolClassType { ClassA, ClassB, ClassC }
 }

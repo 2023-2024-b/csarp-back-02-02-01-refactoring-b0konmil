@@ -1,8 +1,9 @@
-﻿namespace Kreata.Backend.Datas
+﻿using Kreata.Backend.Datas;
+namespace Kreta.Shared.Dtos
 {
-    public class Student
+    public class StudentDto
     {
-        public Student(Guid id, string firstName, string lastName, DateTime birthsDay, int schoolYear, SchoolClassType schoolClass, string educationLevel,bool isWoman)
+        public StudentDto(Guid id, string firstName, string lastName, DateTime birthsDay, int schoolYear, SchoolClassType schoolClass, string educationLevel, bool isWooman)
         {
             Id = id;
             FirstName = firstName;
@@ -11,10 +12,9 @@
             SchoolYear = schoolYear;
             SchoolClass = schoolClass;
             EducationLevel = educationLevel;
-            IsWoman= isWoman;
+            IsWoman = isWooman;
         }
-
-        public Student(string firstName, string lastName, DateTime birthsDay, int schoolYear, SchoolClassType schoolClass, string educationLevel, bool isWoman)
+        public StudentDto(string firstName, string lastName, DateTime birthsDay, int schoolYear, SchoolClassType schoolClass, string educationLevel, bool isWooman)
         {
             Id = new Guid();
             FirstName = firstName;
@@ -23,10 +23,9 @@
             SchoolYear = schoolYear;
             SchoolClass = schoolClass;
             EducationLevel = educationLevel;
-            IsWoman = isWoman;
+            IsWoman = isWooman;
         }
-
-        public Student()
+        public StudentDto()
         {
             Id = new Guid();
             FirstName = string.Empty;
@@ -37,7 +36,6 @@
             EducationLevel = string.Empty;
             IsWoman = false;
         }
-
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -46,10 +44,5 @@
         public SchoolClassType SchoolClass { get; set; }
         public string EducationLevel { get; set; }
         public bool IsWoman { get; set; }
-
-        public override string ToString()
-        {
-            return $"{LastName} {FirstName} ({SchoolYear}.{SchoolClass}), Szül: ({String.Format("{0:yyyy.MM.dd.}", BirthsDay)}), Tanulmányi szint: ({EducationLevel})";
-        }
     }
 }

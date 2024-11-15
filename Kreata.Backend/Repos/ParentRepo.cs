@@ -6,30 +6,30 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Kreata.Backend.Repos
 {
-    public class StudentRepo : IStudentRepo
+    public class ParentRepo : IParentRepo
     {
         private readonly KretaInMemoryContext _dbContext;
 
-        public StudentRepo(KretaInMemoryContext dbContext)
+        public ParentRepo(KretaInMemoryContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<Student?> GetBy(Guid id)
+        public async Task<Parent?> GetBy(Guid id)
         {
-            return await _dbContext.Students.FirstOrDefaultAsync(s => s.Id == id);
+            return await _dbContext.Parents.FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public async Task<List<Student>> GetAll()
+        public async Task<List<Parent>> GetAll()
         {
-            return await _dbContext.Students.ToListAsync();
+            return await _dbContext.Parents.ToListAsync();
         }
 
-        public async Task<ControllerResponse> UpdateStudentAsync(Student student)
+        public async Task<ControllerResponse> UpdateParentAsync(Parent parent)
         {
             ControllerResponse response = new ControllerResponse();
             _dbContext.ChangeTracker.Clear();
-            _dbContext.Entry(student).State = EntityState.Modified;
+            _dbContext.Entry(parent).State = EntityState.Modified;
             try
             {
                 await _dbContext.SaveChangesAsync();
@@ -37,8 +37,8 @@ namespace Kreata.Backend.Repos
             catch (Exception e)
             {
                 response.AppendNewError(e.Message);
-                response.AppendNewError($"{nameof(StudentRepo)} osztály, {nameof(UpdateStudentAsync)} metódusban hiba keletkezett");
-                response.AppendNewError($"{student} frissítése nem sikerült!");
+                response.AppendNewError($"{nameof(ParentRepo)} osztály, {nameof(UpdateParentAsync)} metódusban hiba keletkezett");
+                response.AppendNewError($"{parent} frissítése nem sikerült!");
             }
             return response;
         }
